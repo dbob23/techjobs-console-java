@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -83,6 +84,40 @@ public class JobData {
 
         return jobs;
     }
+
+
+    /**
+     * Returns results of a search for a term in all columns,
+     * with no job listed twice, and allows for new columns to be
+     * added to the data.
+     */
+    public static ArrayList<HashMap<String, String>> findByValue (String value) {
+
+        loadData();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> job : allJobs) {
+
+            Collection<String> aValues = job.values();
+
+            for (String item : aValues) {
+
+                if (item.contains(value)) {
+                    if (!jobs.contains(job)) {
+
+
+                        jobs.add(job);
+                    }
+                }
+            }
+        }
+        return jobs;
+    }
+
+
+
+
 
     /**
      * Read in data from a CSV file and store it in a list

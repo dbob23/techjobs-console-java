@@ -58,6 +58,7 @@ public class TechJobs {
                 System.out.println("\nSearch term: ");
                 String searchTerm = in.nextLine();
 
+
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
                     //System.out.println("Search all fields not yet implemented.");
@@ -118,7 +119,8 @@ public class TechJobs {
                 for (Map.Entry<String, String> details : job.entrySet()) {
                     System.out.println(details.getKey() + " : " + details.getValue());
                 }
-
+                System.out.println("*****");
+                System.out.println(" ");
             }
         }
     }
